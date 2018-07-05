@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <script src="js/jquery-2.2.4.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/home.js"></script>
+
+    <head>
+        <title>Weather Map</title>
+    </head>
+    <body>
+            
+        <div class="container">
+            
+            <div class="banner">
+                    <h1>Weather Page</h1>
+                    <hr/>
+            </div>
+
+            <div class"errorMessages">                   
+                    <ul class="list-group" id="errorMessage"></ul>   
+             </div>
+
+            
+            <div class="weatherSubmit" align='center'>
+                <form>
+                    <div>
+                        <label for="userZipcode">Enter zipcode:</label>
+                            <input type="number" id="userZipcode" name="zipcode" placeholder="Enter Zipcode">
+                        <label for="userUnits">Units:</label>
+                        <select id="unitSelector">
+                            <option value="Imperial">Imperial</option>
+                            <option value="Metric">Metric</option>
+                        </select>
+                        <button id="getWeather" type="button">Get Weather</button>
+                    </div>
+                </form>
+            </div>
+            
+            
+            
+            <div class="weatherResponse">
+            </div>
+    
+            
+            <div class="currentImperial">
+                    <h2 id="currentConditions"></h2>
+                    <table id="currentCondtionsTable" class = "table table-hover">
+                        <tr>
+                            <th>
+                                <td id='iconTD'></td>
+                                <td id='conditionsTD'></td>
+                            </th>
+                            <th width="40%">
+                            </th>
+                            <th width="40%">
+                                <ul id='currentTemp'></ul>
+                                <ul id='humidity'></ul>
+                                <ul id='wind'></ul>
+                            </th>
+                        </tr>
+                        <tbody id = "contentRows"></tbody>
+                    </table>     
+                </div>
+
+                <div class="currentMetric">
+                        <h2 id="currentConditionsMetric"></h2>
+                        <table id="currentCondtionsTableMetric" class = "table table-hover">
+                            <tr>
+                                <th>
+                                    <td id='iconTDMetric'></td>
+                                    <td id='conditionsTDMetric'></td>
+                                </th>
+                                <th width="40%">
+                                </th>
+                                <th width="40%">
+                                    <ul id='currentTempMetric'></ul>
+                                    <ul id='humidityMetric'></ul>
+                                    <ul id='windMetric'></ul>
+                                </th>
+                            </tr>
+                            <tbody id = "contentRows"></tbody>
+                        </table>     
+                    </div>
+
+
+                    <div class="container table-responsive" id="forecastImperial">    
+                        <p>
+                            <h2>Five Day Forecast</h2> 
+                        <hr>         
+                            <table border="0" width="100%" class="table-hover">
+                                    <colgroup>
+                                        <col class"date" span="2">
+                                    </colgroup>
+                                    
+                                <tr class="date">                  
+                                    <th colspan="2" id="dayOne" class="text-center"></th> 
+                                    <th colspan="2" id="dayTwo" class="text-center"></th>   
+                                    <th colspan="2" id="dayThree" class="text-center"></th>  
+                                    <th colspan="2" id="dayFour" class="text-center"></th>  
+                                    <th colspan="2" id="dayFive" class="text-center"></th>
+                                    
+                                </tr>
+                                <tr> 
+                                    <td id='dayOneIcon' class="text-center"></td>
+                                    <td id='dayOneConditions' class="text-center"></td>         
+                                    <td id='dayTwoIcon' class="text-center"></td>
+                                    <td id='dayTwoConditions' class="text-center"></td>
+                                    <td id='dayThreeIcon' class="text-center"></td>
+                                    <td id='dayThreeConditions' class="text-center"></td>
+                                    <td id='dayFourIcon' class="text-center"></td>
+                                    <td id='dayFourConditions' class="text-center"></td>
+                                    <td id='dayFiveIcon' class="text-center"></td>
+                                    <td id='dayFiveConditions' class="text-center"></td>
+                                </tr>
+                                <tr>                            
+                                    <td id='dayOneHi'class="text-center"></td>                                             
+                                    <td id='dayOneLo'class="text-center"></td>                      
+                                    <td id='dayTwoHi'class="text-center"></td>                   
+                                    <td id='dayTwoLo'class="text-center"></td>                       
+                                    <td id='dayThreeHi'class="text-center"></td>               
+                                    <td id='dayThreeLo'class="text-center"></td>                 
+                                    <td id='dayFourHi'class="text-center"></td>                        
+                                    <td id='dayFourLo'class="text-center"></td>           
+                                    <td id='dayFiveHi'class="text-center"></td>                
+                                    <td id='dayFiveLo'class="text-center"></td>                             
+                                </tr>
+                                                
+                        </table>
+                        </p>
+                    </div>           
+
+                    <div class="container table-responsive" id="forecastMetric">    
+                            <p>
+                                <h2>Five Day Forecast</h2> 
+                            <hr>         
+                                <table border="0" width="100%" class="table-hover">
+                                        <colgroup>
+                                            <col class"date" span="2">
+                                        </colgroup>
+                                        
+                                    <tr class="date">                  
+                                        <th colspan="2" id="dayOneMetric" class="text-center"></th> 
+                                        <th colspan="2" id="dayTwoMetric" class="text-center"></th>   
+                                        <th colspan="2" id="dayThreeMetric" class="text-center"></th>  
+                                        <th colspan="2" id="dayFourMetric" class="text-center"></th>  
+                                        <th colspan="2" id="dayFiveMetric" class="text-center"></th>
+                                        
+                                    </tr>
+                                    <tr> 
+                                        <td id='dayOneIconMetric' class="text-center"></td>
+                                        <td id='dayOneConditionsMetric' class="text-center"></td>         
+                                        <td id='dayTwoIconMetric' class="text-center"></td>
+                                        <td id='dayTwoConditionsMetric' class="text-center"></td>
+                                        <td id='dayThreeIconMetric' class="text-center"></td>
+                                        <td id='dayThreeConditionsMetric' class="text-center"></td>
+                                        <td id='dayFourIconMetric' class="text-center"></td>
+                                        <td id='dayFourConditionsMetric' class="text-center"></td>
+                                        <td id='dayFiveIconMetric' class="text-center"></td>
+                                        <td id='dayFiveConditionsMetric' class="text-center"></td>
+                                    </tr>
+                                    <tr>                            
+                                        <td id='dayOneHiMetric'class="text-center"></td>                                             
+                                        <td id='dayOneLoMetric'class="text-center"></td>                      
+                                        <td id='dayTwoHiMetric'class="text-center"></td>                   
+                                        <td id='dayTwoLoMetric'class="text-center"></td>                       
+                                        <td id='dayThreeHiMetric'class="text-center"></td>               
+                                        <td id='dayThreeLoMetric'class="text-center"></td>                 
+                                        <td id='dayFourHiMetric'class="text-center"></td>                        
+                                        <td id='dayFourLoMetric'class="text-center"></td>           
+                                        <td id='dayFiveHiMetric'class="text-center"></td>                
+                                        <td id='dayFiveLoMetric'class="text-center"></td>                             
+                                    </tr>
+                                                    
+                            </table>
+                            </p>
+                        </div>           
+            
+            
+            
+
+        </div>
+        
+    </body>
+
+</html>
